@@ -10,8 +10,10 @@ public class Main {
 		MessageParser messageparser = new MessageParser();
 		FileLoader fileloader = new FileLoader();
 		PMCounter pmcounter = new PMCounter();
+		FileWriter filewriter = new FileWriter();
 		
 		HashMap<Integer, String> parsedMessage = new HashMap<Integer, String>();
+		HashMap<String, Integer> contentToWrite = null;
 		
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("Enter the file name: ");
@@ -21,9 +23,10 @@ public class Main {
 		for (int i=0; i<listOfFiles.length; i++) {
 			ArrayList<String> brought = fileloader.fileLoad(listOfFiles[i]);
 			parsedMessage = messageparser.messageparse(brought);
-			pmcounter.pmcount(parsedMessage); //PMCounter
+			contentToWrite = pmcounter.pmcount(parsedMessage); //PMCounter
 		}
 		
+		filewriter.filewrite(contentToWrite);
 		
 		keyboard.close();	
 	}
