@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MessageParser {
-	public void messageparse(ArrayList<String> brought) {
+	public HashMap<Integer, String> messageparse(ArrayList<String> brought) {
 		
 		ArrayList<String> loadedlines = brought; //bring arraylist
 		String[] place = loadedlines.toArray(new String[loadedlines.size()]); //arraylist -> array
@@ -130,10 +130,10 @@ public class MessageParser {
 				continue;
 			}
 		}
-		for (Integer num : parse.keySet()) { //checking if its parsed correctly
-			System.out.println(parse.get(num));
-		}
-	
+	//	for (Integer num : parse.keySet()) { //checking if its parsed correctly
+		//	System.out.println(parse.get(num));
+	//	}
+	return parse;
 	}
 
 }
