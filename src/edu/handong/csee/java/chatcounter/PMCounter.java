@@ -17,10 +17,9 @@ public class PMCounter {
 	ArrayList<String> parsedMessageArrayList = new ArrayList<String>();
 	//new arraylist name
 	ArrayList<String> nameArraylist = new ArrayList<String>();
-	//new hashmap(name) - key: name, value: 횟수
+	//new hashmap(name) - key: name, value: times
 	HashMap<String, Integer> finalValue = new HashMap<String, Integer>();
-	//new arraylist 중복제거한것들 추가하는 곳
-	//new int 횟수
+	//new arraylist deleted duplicated
 	int i=0;
 	int j=0;
 	int count = 1;
@@ -28,27 +27,27 @@ public class PMCounter {
 	ArrayList<String> parsedMessageIntoArrayWithoutDuplicateOnlyName = new ArrayList<String>();
 	
 	
-	parsedMessageArrayList.addAll( parsedMessage.values() ); //parsedMessageArrayList = parsedMessage를 arraylist로 바꿈
+	parsedMessageArrayList.addAll( parsedMessage.values() ); //parsedMessageArrayList = parsedMessage -> arraylist
 	String[] parsedMessageIntoArray = parsedMessageArrayList.toArray(new String[parsedMessageArrayList.size()]); //arraylist -> array
 	//hashmap -> array
 	
 	
-	//matcher로 ([] [] []) 이름값만 가져와서 arraylist(name)에 추가
+	//matcher로 ([] [] [])  arraylist(name) adds only name
 	for(i = 0; i<parsedMessageIntoArray.length; i++) {
 		if (parsedMessageIntoArray[i].matches("\\[.+\\]\\s\\[.+\\]\\s\\[.+\\]")) {
 			String pattern = "\\[(.+)\\]\\s\\[(.+)\\]\\s\\[(.+)\\]";
 			Pattern r = Pattern.compile(pattern);
-			Matcher m = r.matcher(parsedMessageIntoArray[i]); //해당하는 라인
+			Matcher m = r.matcher(parsedMessageIntoArray[i]); //applicable line
 			
 			if(m.find()) {
-				nameArraylist.add(m.group(2)); // 이름값만 들어간 array(nameArraylist)
+				nameArraylist.add(m.group(2)); // array(nameArraylist)
 			}
 			continue;
 		}
 	}
 
 	
-	//arraylist(name) 안에서 중복값 제거
+	//arraylist(name) deleted duplicated
 	ArrayList<String> nameArraylistWithoutDuplicate = new ArrayList<String>();
 	for (i=0;i<nameArraylist.size(); i++) {
 		if(!nameArraylistWithoutDuplicate.contains(nameArraylist.get(i)))
@@ -56,13 +55,12 @@ public class PMCounter {
 	} //중복값 제거한 nameArraylistWithoutDuplicate
 	
 	
-	//가져온 카톡 기록에서 중복 제거(parsedMessageIntoArray)
+	//(parsedMessageIntoArray): deleted duplicated
 	parsedMessageIntoArrayWithoutDuplicate = new HashSet<String>(Arrays.asList(parsedMessageIntoArray)).toArray(new String[0]);
+
+	//http://cpdev.tistory.com/41
 	
-	
-	
-	//출처: http://cpdev.tistory.com/41 [하루하나]
-//parsedMessageIntoArrayWithoutDuplicate는 중복이 제거됨
+//parsedMessageIntoArrayWithoutDuplicate: deleted duplicated
 	
 	//count
 	
@@ -70,10 +68,10 @@ public class PMCounter {
 		if (parsedMessageIntoArrayWithoutDuplicate[i].matches("\\[.+\\]\\s\\[.+\\]\\s\\[.+\\]")) {
 			String pattern = "\\[(.+)\\]\\s\\[(.+)\\]\\s\\[(.+)\\]";
 			Pattern r2 = Pattern.compile(pattern);
-			Matcher m2 = r2.matcher(parsedMessageIntoArrayWithoutDuplicate[i]); //해당하는 라인
+			Matcher m2 = r2.matcher(parsedMessageIntoArrayWithoutDuplicate[i]); //applicable line
 			
 			if(m2.find()) {
-				parsedMessageIntoArrayWithoutDuplicateOnlyName.add(m2.group(2)); // 이름값만 들어간 array(nameArraylist)
+				parsedMessageIntoArrayWithoutDuplicateOnlyName.add(m2.group(2)); // array(nameArraylist) has only name
 			}
 			continue;
 		}
@@ -81,9 +79,9 @@ public class PMCounter {
 	
 	String[] parsedMessageIntoArrayWithoutDuplicateOnlyNameIntoArray = parsedMessageIntoArrayWithoutDuplicateOnlyName.toArray(new String[parsedMessageIntoArrayWithoutDuplicateOnlyName.size()]); //arraylist -> array
 	
-	String[] nameArrayWithoutDuplicate = nameArraylistWithoutDuplicate.toArray(new String[nameArraylistWithoutDuplicate.size()]); //nameArraylistWithoutDuplicate를 name3에 array로 저장
+	String[] nameArrayWithoutDuplicate = nameArraylistWithoutDuplicate.toArray(new String[nameArraylistWithoutDuplicate.size()]); 
 	
-		for (i = 0; i < nameArraylistWithoutDuplicate.size(); i++) { //nameArraylistWithoutDuplicate = 이름 중복값 제거한 arraylist
+		for (i = 0; i < nameArraylistWithoutDuplicate.size(); i++) { //nameArraylistWithoutDuplicate =  arraylist deleted duplicated
 		count = 0;
 		for (j = 0; j < parsedMessageIntoArrayWithoutDuplicate.length; j++) {
 			if (nameArrayWithoutDuplicate[i].equals(parsedMessageIntoArrayWithoutDuplicateOnlyNameIntoArray[j])) {

@@ -19,13 +19,11 @@ public class FileLoader {
 	         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(listOfFiles), "UTF8"));
 	         while ((thisLine = br.readLine()) != null) { // while loop begins here
 	            lines.add(thisLine);
-	           // System.out.println(thisLine);
 	        }
 	        br.close();
 	      	} catch (IOException e) {
 	         e.printStackTrace();
-	      	} // end while 
-			//	System.out.println(lines); //메세지의 내용을 lines라는 arraylist에 저장
+	      	} 
 		return lines;
 	}
 

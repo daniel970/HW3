@@ -34,35 +34,35 @@ public class MessageParser {
 		String bun2 = "";
 		String namePlusStrMessage = ""; //[WS] Yes I think so..
 		String namePlusStrMessage2 = ""; //[JC] Hi everyone. How are you?
-		String finalParseSample = ""; //수정 - 201806011242 [JC] Hi everyone. How are you?
-		String finalParseSample2 = ""; //수정
+		String finalParseSample = ""; //edit - 201806011242 [JC] Hi everyone. How are you?
+		String finalParseSample2 = ""; //edit
 		int count = 0; //hashmap starts from 1
 		
 
 		
 		int i = 0;
-		for(i = 0; i<place.length; i++) { //가지고온 어레이 리스트 하나하나, 처음 라인부터 끝 라인까지
+		for(i = 0; i<place.length; i++) { //loop place
 			
-			if(place[i].matches("-+\\s[0-9]+.\\s[0-9]+.\\s[0-9]+.+")) { //--------------- 2018년 4월 26일 목요일 ---------------
+			if(place[i].matches("-+\\s[0-9]+.\\s[0-9]+.\\s[0-9]+.+")) { //--------------- yy/mm/dd ---------------
 				String pattern = "-+\\s([0-9]+).\\s([0-9]+).\\s+([0-9]+).+";
 				Pattern r = Pattern.compile(pattern);
-				Matcher m = r.matcher(place[i]); //해당하는 라인
+				Matcher m = r.matcher(place[i]); //applicable line
 				
 				if(m.find()) {
 					currentYear = m.group(1);
 					currentMonth = m.group(2);
 					currentDay = m.group(3);
 				}		
-				currentMonth = "0" + currentMonth; //4월 -> 04월
+				currentMonth = "0" + currentMonth; //4 -> 04
 				dateinFormat = currentYear + currentMonth + currentDay;
 				continue;
 			}else if(place[i].matches("[0-9]+-[0-9]+-[0-9]+\\s[0-9]+:[0-9]+:[0-9]+,\\s.+,\".+\"")) { //2018-04-03 15:05:48, JC,"Hi everyone. How are you?"
 				String pattern = "([0-9]+)-([0-9]+)-([0-9]+)\\s([0-9]+):([0-9]+):[0-9]+,\\s(.+),\"(.+)\"";
 				Pattern r = Pattern.compile(pattern);
-				Matcher m = r.matcher(place[i]); //해당하는 라인
+				Matcher m = r.matcher(place[i]); //applicable line
 				
 				if(m.find()) {
-					currentYear = m.group(1); //이곳 조금 다르게함(32/38)
+					currentYear = m.group(1); 
 					currentMonth = m.group(2);
 					currentDay = m.group(3);
 					currentHr = m.group(4);
@@ -79,11 +79,11 @@ public class MessageParser {
 			}
 			
 
-			if(place[i].matches("\\[.+\\]\\s\\[.+\\]\\s.+")) { //[WS] [오전 7:16] Yes I think so..
+			if(place[i].matches("\\[.+\\]\\s\\[.+\\]\\s.+")) { //[WS] [am 7:16] Yes I think so..
 				String pattern = "(\\[.+\\])\\s\\[(.+)\\]\\s(.+)";
 				
 				Pattern r = Pattern.compile(pattern);
-				Matcher m = r.matcher(place[i]); //해당하는 라인
+				Matcher m = r.matcher(place[i]); //applicable line
 				
 				if(m.find()) {
 					id = m.group(1); //[WC]
@@ -91,7 +91,7 @@ public class MessageParser {
 					strMessage = m.group(3);
 				}
 				
-				if (time.matches(".+\\s[0-9]+:[0-9]+")) { //오전 7:16
+				if (time.matches(".+\\s[0-9]+:[0-9]+")) { //am 7:16
 					String timePattern = "(.+)\\s([0-9]+):([0-9]+)";
 					Pattern r2 = Pattern.compile(timePattern);
 					Matcher m2 = r2.matcher(time);
@@ -101,8 +101,8 @@ public class MessageParser {
 						si = m2.group(2); //string
 						bun = Integer.parseInt(m2.group(3));
 					}
-					si2 = Integer.parseInt(si); //7 int로 받기, si2 = (int)si = 2
-					if (ampm.equals("오후")) { //오후면 12추가
+					si2 = Integer.parseInt(si); //7 int get, si2 = (int)si = 2
+					if (ampm.equals("오후")) { //pm -> add 12
 						si3 = 12 + si2;
 						si = String.valueOf(si3);
 					}else {
