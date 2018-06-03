@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"edu.handong.csee.java.chatcounter","c":"FileLoader","l":"fileLoad(String)","url":"fileLoad-java.lang.String-"},{"p":"edu.handong.csee.java.chatcounter","c":"FileLoader","l":"FileLoader()"}]

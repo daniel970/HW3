@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/*Name:Doyoung Kim 21700082
+ * Lecture: Java
+ * Date: 2018-06-03
+ * Description: Main
+ */
+
 public class Main {
 	public static void main(String[] args)throws IOException {
 		MessageParser messageparser = new MessageParser();

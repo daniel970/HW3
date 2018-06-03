@@ -8,11 +8,16 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*Name:Doyoung Kim 21700082
+ * Lecture: Java
+ * Date: 2018-06-03
+ * Description: Counting messages
+ */
 
 public class PMCounter {
 
 	public HashMap<String, Integer> pmcount(HashMap<Integer, String> parsedMessage){
-	//가져온 hashmap parsedMessage
+	//hashmap parsedMessage
 	
 	ArrayList<String> parsedMessageArrayList = new ArrayList<String>();
 	//new arraylist name
@@ -32,7 +37,7 @@ public class PMCounter {
 	//hashmap -> array
 	
 	
-	//matcher로 ([] [] [])  arraylist(name) adds only name
+	//matcher ([] [] [])  arraylist(name) adds only name
 	for(i = 0; i<parsedMessageIntoArray.length; i++) {
 		if (parsedMessageIntoArray[i].matches("\\[.+\\]\\s\\[.+\\]\\s\\[.+\\]")) {
 			String pattern = "\\[(.+)\\]\\s\\[(.+)\\]\\s\\[(.+)\\]";
@@ -52,7 +57,7 @@ public class PMCounter {
 	for (i=0;i<nameArraylist.size(); i++) {
 		if(!nameArraylistWithoutDuplicate.contains(nameArraylist.get(i)))
 			nameArraylistWithoutDuplicate.add(nameArraylist.get(i));
-	} //중복값 제거한 nameArraylistWithoutDuplicate
+	} // nameArraylistWithoutDuplicate: deleted duplicated
 	
 	
 	//(parsedMessageIntoArray): deleted duplicated

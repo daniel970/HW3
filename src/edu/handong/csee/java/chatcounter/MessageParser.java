@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*Name:Doyoung Kim 21700082
+ * Lecture: Java
+ * Date: 2018-06-03
+ * Description: Parsing message
+ */
+
 public class MessageParser {
 	public HashMap<Integer, String> messageparse(ArrayList<String> brought) {
 		
@@ -102,7 +108,7 @@ public class MessageParser {
 						bun = Integer.parseInt(m2.group(3));
 					}
 					si2 = Integer.parseInt(si); //7 int get, si2 = (int)si = 2
-					if (ampm.equals("오후")) { //pm -> add 12
+					if (ampm.equals("오후")) { //pm -> add 12 <-***************THIS PART HAS JAVADOC ERROR***************
 						si3 = 12 + si2;
 						si = String.valueOf(si3);
 					}else {

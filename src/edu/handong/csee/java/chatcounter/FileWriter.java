@@ -7,6 +7,12 @@ import java.io.OutputStreamWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/*Name:Doyoung Kim 21700082
+ * Lecture: Java
+ * Date: 2018-06-03
+ * Description: Exporting File into .csv
+ */
+
 public class FileWriter {
 	public void filewrite(HashMap<String, Integer> something){
 		//String encoding = new java.io.OutputStreamWriter(System.out).getEncoding();
