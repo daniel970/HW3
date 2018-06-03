@@ -98,12 +98,12 @@ public class PMCounter {
 		}
 
 
-		Iterator<String> iterator = finalValue.keySet().iterator();
-	    while (iterator.hasNext()) {
-	        String key = (String) iterator.next();
-	        System.out.print("key="+key);
-	        System.out.println(" value="+finalValue.get(key));
-	    }
+	//	Iterator<String> iterator = finalValue.keySet().iterator();
+	  //  while (iterator.hasNext()) {
+	    //    String key = (String) iterator.next();
+	      //  System.out.print("key="+key);
+	        //System.out.println(" value="+finalValue.get(key));
+	    //}
 	return finalValue;
 	}
 }
